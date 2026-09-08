@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blueticks Solutions — we get your shop found, and worth stopping for</title>
+<meta name="description" content="We build small businesses a website and run their social media. Free website build (you only pay hosting and domain), AI-made reels, and 15 days of free posting to start. Working with clients in the UK, USA, Australia and Canada.">
+<meta name="theme-color" content="#0E1A22">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="blueticks Solutions">
+<meta property="og:description" content="Your work is good. The problem is nobody has seen it yet. We fix that — website, posts, reels, ads.">
+<meta property="og:image" content="assets/hero-poster.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   blueticks Solutions — design system
+   ============================================================ */
+:root{
+  --ink:#0E1A22;
+  --paper:#F2F4F1;
+  --paper-2:#E8EBE6;
+  --blue:#2C6E8E;
+  --blue-deep:#215770;
+  --amber:#D98A3D;
+  --amber-dark:#C0762D;
+  --slate:#5B6B70;
+  --line:#D6DAD4;
+  --line-dark:rgba(242,244,241,.16);
+
+  --r-sm:8px;
+  --r-md:14px;
+  --r-lg:22px;
+  --r-pill:999px;
+
+  --pad:clamp(20px, 5vw, 64px);
+  --gap:clamp(28px, 4vw, 56px);
+  --sec:clamp(72px, 10vw, 132px);
+  --maxw:1240px;
+
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --sans:"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --shadow-sm:0 1px 2px rgba(14,26,34,.06), 0 4px 14px rgba(14,26,34,.05);
+  --shadow-md:0 10px 30px rgba(14,26,34,.10), 0 2px 6px rgba(14,26,34,.06);
+  --shadow-lg:0 24px 60px rgba(14,26,34,.18);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,video,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(2.35rem, 5.6vw, 4.35rem)}
+h2{font-size:clamp(1.9rem, 3.9vw, 3.05rem)}
+h3{font-size:clamp(1.15rem, 1.7vw, 1.4rem);line-height:1.25}
+p{margin:0}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+/* ---------- shared bits ---------- */
+.eyebrow{
+  font-size:.775rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue);display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--amber);flex:none}
+.dark .eyebrow,.hero .eyebrow{color:var(--amber)}
+
+.lede{font-size:clamp(1.05rem,1.5vw,1.235rem);color:var(--slate);line-height:1.6;max-width:56ch}
+.dark .lede{color:rgba(242,244,241,.74)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:var(--r-pill);
+  font-weight:600;font-size:.97rem;text-decoration:none;
+  border:1.5px solid transparent;cursor:pointer;
+  transition:transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
+  white-space:nowrap;
+}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-amber{background:var(--amber);color:#1B1206;box-shadow:0 6px 18px rgba(217,138,61,.30)}
+.btn-amber:hover{background:var(--amber-dark);transform:translateY(-2px);box-shadow:0 10px 24px rgba(217,138,61,.34)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(242,244,241,.34);color:#F2F4F1;background:rgba(242,244,241,.05)}
+.btn-ghost:hover{background:rgba(242,244,241,.13);border-color:rgba(242,244,241,.6);transform:translateY(-2px)}
+.btn-outline{border-color:var(--line);background:#fff;color:var(--ink)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.btn-sm{padding:10px 18px;font-size:.9rem}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2.5px solid var(--amber);outline-offset:3px;border-radius:var(--r-sm);
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(14,26,34,.86);
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(242,244,241,.10);
+  transition:background-color .25s ease;
+}
+.nav.scrolled{background:rgba(14,26,34,.97)}
+.nav-in{display:flex;align-items:center;gap:16px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#F2F4F1;margin-right:auto}
+.brand-mark{width:34px;height:34px;flex:none;border-radius:10px;background:var(--blue);display:grid;place-items:center}
+.brand-mark svg{width:19px;height:19px;color:#fff}
+.brand-name{font-family:var(--serif);font-size:1.16rem;font-weight:600;letter-spacing:-.01em;line-height:1}
+.brand-name b{font-weight:600;color:#fff}
+.brand-name span{color:var(--amber);font-weight:400}
+.nav-actions{display:flex;align-items:center;gap:10px}
+@media (max-width:520px){
+  .nav-in{height:64px;gap:8px}
+  .nav-actions .label-full{display:none}
+  .nav-actions .btn{padding:10px 14px}
+  .brand-name{font-size:1.02rem}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--ink);color:var(--paper);overflow:hidden;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media video{opacity:0;transition:opacity .9s ease}
+.hero-media video.ready{opacity:1}
+.hero-scrim{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(100deg, rgba(14,26,34,.93) 0%, rgba(14,26,34,.84) 38%, rgba(14,26,34,.46) 72%, rgba(14,26,34,.60) 100%),
+    linear-gradient(to top, rgba(14,26,34,.92) 0%, rgba(14,26,34,0) 45%);
+}
+.hero-in{
+  padding-top:clamp(64px,11vw,124px);
+  padding-bottom:clamp(58px,9vw,112px);
+}
+.hero-col{max-width:790px}
+h1 .hl{color:var(--amber);font-style:italic;font-weight:400}
+.hero-sub{margin-top:24px;font-size:clamp(1.06rem,1.55vw,1.28rem);line-height:1.6;color:rgba(242,244,241,.80);max-width:54ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.hero-note{
+  display:flex;align-items:center;gap:10px;margin-top:30px;
+  font-size:.9rem;color:rgba(242,244,241,.62);
+}
+.hero-note svg{width:17px;height:17px;color:var(--amber);flex:none}
+
+.tap-play{
+  display:none;align-items:center;gap:10px;margin-top:22px;
+  background:rgba(242,244,241,.08);border:1.5px solid rgba(242,244,241,.28);
+  color:#F2F4F1;padding:11px 20px;border-radius:var(--r-pill);
+  font-size:.9rem;font-weight:500;cursor:pointer;
+}
+.tap-play svg{width:17px;height:17px;color:var(--amber)}
+body.show-tap .tap-play{display:inline-flex}
+
+/* hero load stagger */
+.stagger > *{animation:rise .78s cubic-bezier(.2,.72,.28,1) both}
+.stagger > *:nth-child(1){animation-delay:.05s}
+.stagger > *:nth-child(2){animation-delay:.13s}
+.stagger > *:nth-child(3){animation-delay:.21s}
+.stagger > *:nth-child(4){animation-delay:.29s}
+.stagger > *:nth-child(5){animation-delay:.37s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- scroll reveal (headings only) ---------- */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .62s ease, transform .62s cubic-bezier(.2,.72,.28,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.pad{padding-block:var(--sec)}
+.dark{background:var(--ink);color:var(--paper)}
+.paper2{background:var(--paper-2)}
+.split{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:var(--gap) clamp(32px,5vw,84px);align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:34px}}
+.split-head{position:sticky;top:100px}
+@media (max-width:900px){.split-head{position:static}}
+.head-note{margin-top:22px;font-size:.97rem;color:var(--slate);max-width:38ch}
+.dark .head-note{color:rgba(242,244,241,.66)}
+
+/* highlight flash when a ?for= link or a path button jumps here */
+@keyframes flash{
+  0%{box-shadow:inset 0 0 0 0 rgba(217,138,61,0)}
+  22%{box-shadow:inset 0 0 0 3px rgba(217,138,61,.55)}
+  100%{box-shadow:inset 0 0 0 3px rgba(217,138,61,0)}
+}
+.flashing{animation:flash 1.9s ease-out 1}
+[tabindex="-1"]:focus{outline:none}
+
+/* ---------- path strip ---------- */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+@media (max-width:780px){.paths{grid-template-columns:1fr}}
+.path-card{
+  display:block;text-decoration:none;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:clamp(24px,3vw,34px);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow:var(--shadow-sm);
+}
+.path-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--blue)}
+.path-ico{
+  width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:rgba(44,110,142,.10);color:var(--blue);margin-bottom:20px;
+}
+.path-ico svg{width:24px;height:24px}
+.path-card p{color:var(--slate);margin-top:12px;font-size:1rem}
+.path-more{display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:var(--blue);font-weight:600;font-size:.94rem}
+.path-more svg{width:17px;height:17px;transition:transform .2s ease}
+.path-card:hover .path-more svg{transform:translateX(4px)}
+
+/* ---------- feature list ---------- */
+.feat{display:grid;gap:26px}
+.feat-item{display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:start}
+.feat-ico{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;
+  border:1px solid var(--line);background:#fff;color:var(--blue);
+}
+.dark .feat-ico{background:rgba(242,244,241,.06);border-color:var(--line-dark);color:var(--amber)}
+.feat-ico svg{width:22px;height:22px}
+.feat-item h3{margin-bottom:7px}
+.feat-item p{color:var(--slate);font-size:1rem}
+.dark .feat-item p{color:rgba(242,244,241,.70)}
+.feat-tag{
+  display:inline-block;margin-top:9px;font-size:.7rem;letter-spacing:.10em;text-transform:uppercase;
+  font-weight:600;color:var(--slate);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px 11px;
+}
+.dark .feat-tag{color:rgba(242,244,241,.58);border-color:var(--line-dark)}
+
+/* ---------- pull quote ---------- */
+.pull{
+  font-family:var(--serif);font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.32;
+  border-left:3px solid var(--amber);padding-left:clamp(18px,2.4vw,30px);
+  margin:0 0 42px;max-width:24ch;
+}
+
+/* ---------- package ---------- */
+.pkg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (max-width:900px){.pkg-grid{grid-template-columns:1fr}}
+.pkg{
+  background:var(--ink);color:var(--paper);border-radius:var(--r-lg);
+  padding:clamp(28px,3.6vw,46px);box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.pkg:hover{transform:translateY(-3px);box-shadow:0 30px 70px rgba(14,26,34,.24)}
+.pkg::after{
+  content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle, rgba(217,138,61,.20), transparent 70%);pointer-events:none;
+}
+.pkg-title{font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,1.95rem);font-weight:600;line-height:1.15}
+.pkg-sub{color:rgba(242,244,241,.66);margin-top:10px;font-size:1rem}
+.pkg-list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:20px;position:relative;z-index:1}
+.pkg-list li{display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start}
+.pkg-check{
+  width:26px;height:26px;border-radius:50%;background:rgba(217,138,61,.16);
+  display:grid;place-items:center;color:var(--amber);flex:none;margin-top:2px;
+}
+.pkg-check svg{width:15px;height:15px}
+.pkg-list strong{font-weight:600;font-size:1.04rem;display:block}
+.pkg-list span{color:rgba(242,244,241,.68);font-size:.95rem;display:block;margin-top:4px}
+.pkg-free{
+  margin-top:30px;border:1px dashed rgba(217,138,61,.5);border-radius:var(--r-md);
+  padding:18px 20px;background:rgba(217,138,61,.08);position:relative;z-index:1;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.pkg-free svg{width:22px;height:22px;color:var(--amber);flex:none;margin-top:2px}
+.pkg-free b{display:block;font-size:1.02rem}
+.pkg-free span{color:rgba(242,244,241,.72);font-size:.94rem}
+.pkg-fine{
+  margin-top:22px;font-size:.92rem;color:var(--slate);border-left:2px solid var(--amber);
+  padding-left:14px;max-width:46ch;
+}
+.pkg-fine b{color:var(--ink)}
+.pkg-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--line-dark);padding-top:24px}
+.step-n{font-family:var(--serif);font-size:2.4rem;color:var(--amber);line-height:1;display:block;margin-bottom:16px}
+.step h3{margin-bottom:9px}
+.step p{color:rgba(242,244,241,.70);font-size:.99rem}
+
+/* ---------- why ---------- */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+@media (max-width:860px){.why{grid-template-columns:1fr}}
+.why-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,2.6vw,32px)}
+.why-card .feat-ico{margin-bottom:18px}
+.why-card p{color:var(--slate);margin-top:9px;font-size:.99rem}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,64px);align-items:start;margin-top:48px}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+form{background:rgba(242,244,241,.045);border:1px solid var(--line-dark);border-radius:var(--r-lg);padding:clamp(24px,3vw,36px)}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.83rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(242,244,241,.66);margin-bottom:8px}
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 15px;border-radius:var(--r-md);
+  background:rgba(242,244,241,.06);border:1px solid var(--line-dark);color:var(--paper);
+  font-family:var(--sans);font-size:1rem;transition:border-color .18s ease, background-color .18s ease;
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(242,244,241,.36)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--amber);background:rgba(242,244,241,.09);outline:none}
+.field select{
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F2F4F1' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;
+}
+.field select option{background:#0E1A22;color:#F2F4F1}
+.field textarea{min-height:118px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+.form-note{font-size:.86rem;color:rgba(242,244,241,.52);margin-top:14px;line-height:1.5}
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+#formSubmit[disabled]{opacity:.65;cursor:default;transform:none}
+
+/* success panel — replaces the form once it's gone through */
+.sent{
+  background:rgba(217,138,61,.09);border:1px solid rgba(217,138,61,.42);
+  border-radius:var(--r-lg);padding:clamp(28px,3.2vw,40px);
+}
+.sent-ico{
+  width:48px;height:48px;border-radius:50%;background:rgba(217,138,61,.18);
+  display:grid;place-items:center;color:var(--amber);margin-bottom:20px;
+}
+.sent-ico svg{width:24px;height:24px}
+.sent h3{margin-bottom:10px}
+.sent p{color:rgba(242,244,241,.74);margin-bottom:24px;max-width:40ch}
+
+.cards{display:grid;gap:16px}
+.ccard{
+  display:flex;gap:16px;align-items:flex-start;text-decoration:none;
+  background:rgba(242,244,241,.045);border:1px solid var(--line-dark);
+  border-radius:var(--r-lg);padding:22px 24px;transition:border-color .2s ease, background-color .2s ease;
+}
+.ccard:hover{border-color:var(--amber);background:rgba(242,244,241,.08)}
+.ccard .feat-ico{width:42px;height:42px;margin:0}
+.ccard b{display:block;font-size:1.02rem;font-weight:600}
+.ccard span{display:block;color:rgba(242,244,241,.66);font-size:.95rem;margin-top:3px;word-break:break-word}
+
+/* ---------- footer ---------- */
+footer{
+  background:#0A141A;color:rgba(242,244,241,.62);
+  padding-top:clamp(44px,6vw,68px);
+  padding-bottom:clamp(88px,8vw,104px); /* room for the floating WhatsApp button */
+  border-top:1px solid rgba(242,244,241,.08);
+}
+.foot-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+.foot-brand .brand{margin-right:0}
+.foot-tag{margin-top:14px;font-size:.95rem;max-width:34ch}
+.foot-serve{font-size:.92rem}
+.foot-serve b{display:block;color:var(--paper);font-weight:600;margin-bottom:10px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.foot-serve ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.foot-serve li{border:1px solid rgba(242,244,241,.14);border-radius:var(--r-pill);padding:4px 13px;font-size:.87rem}
+.foot-links{display:flex;gap:12px;align-items:center}
+.iconlink{
+  width:42px;height:42px;border-radius:12px;border:1px solid rgba(242,244,241,.16);
+  display:grid;place-items:center;color:rgba(242,244,241,.8);
+  transition:border-color .2s ease,color .2s ease,transform .2s ease;
+}
+.iconlink svg{width:20px;height:20px}
+.iconlink:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px)}
+.foot-bottom{
+  margin-top:36px;padding-top:22px;border-top:1px solid rgba(242,244,241,.09);
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.86rem;
+}
+
+/* ---------- floating whatsapp ---------- */
+.float-wa{
+  position:fixed;right:18px;bottom:18px;z-index:70;
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25A35A;color:#fff;text-decoration:none;font-weight:600;font-size:.94rem;
+  padding:13px 20px;border-radius:var(--r-pill);
+  box-shadow:0 10px 30px rgba(0,0,0,.28);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.float-wa:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,0,0,.34)}
+.float-wa svg{width:21px;height:21px}
+@media (max-width:560px){
+  .float-wa{padding:14px;right:14px;bottom:14px}
+  .float-wa .label-full{display:none}
+}
+
+/* ---------- modal (mobile vertical video) ---------- */
+.modal{
+  position:fixed;inset:0;z-index:100;display:none;
+  background:rgba(8,14,18,.93);padding:20px;
+  align-items:center;justify-content:center;
+}
+.modal.open{display:flex}
+.modal-box{position:relative;width:min(420px,100%);max-height:88vh;aspect-ratio:9/16;border-radius:var(--r-lg);overflow:hidden;background:#000}
+.modal-box video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+.modal-close{
+  position:absolute;top:12px;right:12px;z-index:3;
+  width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(10,16,20,.65);color:#fff;display:grid;place-items:center;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.modal-close svg{width:20px;height:20px}
+.modal-fallback{position:absolute;inset:0;z-index:0;display:grid;place-items:center;padding:30px;text-align:center;color:rgba(242,244,241,.7);font-size:.92rem}
+
+/* ---------- reduced motion ---------- */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .stagger > *{animation:none;opacity:1;transform:none}
+  .reveal{opacity:1;transform:none}
+  .flashing{animation:none}
+  .btn:hover,.path-card:hover,.pkg:hover,.float-wa:hover,.iconlink:hover,.path-card:hover .path-more svg{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== icon sprite — one visual language: line style, 24x24, 1.6 stroke ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13l4 4 9-9"/><path d="M9.5 15.5l2 2 10-10"/></symbol>
+  <symbol id="i-browser" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 9h19"/><circle cx="6" cy="6.5" r=".7"/><circle cx="8.6" cy="6.5" r=".7"/><path d="M6 12.5h7M6 16h4.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.2h3"/><path d="M10.6 11.2l3.4 1.9-3.4 1.9z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.8" cy="10.8" r="6.3"/><path d="M15.5 15.5L21 21"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.2c0 4.1-3.8 7.4-8.5 7.4-1.1 0-2.2-.2-3.2-.5L3.5 21l1.6-3.9C4 15.8 3.5 14.1 3.5 12.2c0-4.1 3.8-7.4 8.5-7.4s8.5 3.3 8.5 7.4Z"/><path d="M9 12h6"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="5" width="17.6" height="16" rx="2.5"/><path d="M3.2 10h17.6M8 3v4M16 3v4"/><path d="M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r=".9"/><path d="M12 1.8v2.4M12 19.8v2.4M1.8 12h2.4M19.8 12h2.4"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.6l2.3 11.2h10.1l2-8.2H6.2"/><circle cx="9.5" cy="19.3" r="1.5"/><circle cx="16.8" cy="19.3" r="1.5"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.2V20h16v-9.8"/><path d="M2.6 10.2 4.4 4.2h15.2l1.8 6a3 3 0 0 1-5.9.7 3 3 0 0 1-5.9 0 3 3 0 0 1-5.9-.7Z"/><path d="M9.8 20v-5.4h4.4V20"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.5 4.8 13.4h5.6L10.8 21.5l8.4-10.9h-5.6z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="8.2" r="3.7"/><path d="M2.8 20c0-3.5 2.9-6 6.4-6s6.4 2.5 6.4 6"/><path d="M16.2 5.1a3.6 3.6 0 0 1 0 6.6M18 13.8c2.1.7 3.4 2.6 3.4 5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6"/><path d="M12 3c2.4 2.4 3.6 5.4 3.6 9s-1.2 6.6-3.6 9c-2.4-2.4-3.6-5.4-3.6-9S9.6 5.4 12 3Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10.2 8.6 16 12l-5.8 3.4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.6" width="18.8" height="14.8" rx="2.5"/><path d="m3.6 6.6 7.2 5.4a2 2 0 0 0 2.4 0l7.2-5.4"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 11.6a8.6 8.6 0 0 1-12.7 7.6l-4.5 1.3 1.3-4.4A8.6 8.6 0 1 1 20.6 11.6Z"/><path d="M9.1 8.2c.3-.1.6 0 .8.3l.8 1.3c.1.2.1.5 0 .7l-.5.7a5.4 5.4 0 0 0 2.6 2.6l.7-.5c.2-.1.5-.2.7 0l1.3.8c.3.2.4.5.3.8-.3.8-1.1 1.3-2 1.2a8 8 0 0 1-6-6c-.1-.9.4-1.7 1.3-1.9Z"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3.4"/><path d="M7.4 10.4V17"/><circle cx="7.4" cy="7.2" r=".95"/><path d="M11.4 17v-6.6M11.4 13.1c0-1.6 1-2.7 2.5-2.7s2.6 1 2.6 2.9V17"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h14.5M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.2" width="18" height="4.2" rx="1.4"/><path d="M4.6 12.4V20h14.8v-7.6M12 8.2V20"/><path d="M12 8.2S11 4 8.7 4a2.1 2.1 0 0 0 0 4.2ZM12 8.2S13 4 15.3 4a2.1 2.1 0 0 1 0 4.2Z"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 9.4 6.4 6h4.1l1.5 1.4L10.3 9a1.6 1.6 0 0 0 .1 2.4l4.2 3.7"/><path d="m13.2 6 2-1 6 3.4-2.6 6.3-2.4-.4"/><path d="m2.8 9.4 2.6 6.3 2.6-.5 2.6 2.3a1.5 1.5 0 0 0 2.3-.4"/></symbol>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="blueticks Solutions — back to top">
+      <span class="brand-mark"><svg><use href="#i-tick"></use></svg></span>
+      <span class="brand-name"><b>blueticks</b> <span>Solutions</span></span>
+    </a>
+    <nav class="nav-actions" aria-label="Contact">
+      <a class="btn btn-ghost btn-sm" href="mailto:bluetickssolutions@gmail.com">
+        <svg><use href="#i-mail"></use></svg><span class="label-full">Email us</span>
+      </a>
+      <a class="btn btn-amber btn-sm" href="https://wa.me/923005521519" target="_blank" rel="noopener">
+        <svg><use href="#i-whatsapp"></use></svg><span class="label-full">WhatsApp</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-media">
+    <img id="heroPoster" src="assets/hero-poster.jpg" alt="">
+    <video id="heroVideo" data-src="assets/hero-video.mp4" poster="assets/hero-poster.jpg"
+           muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="wrap hero-in">
+    <div class="hero-col stagger">
+      <p class="eyebrow">Websites · Social media · Reels · Ads</p>
+      <h1 id="heroTitle">You opened the doors. <span class="hl">But who actually knows you're there?</span></h1>
+      <p class="hero-sub" id="heroSub">We get your shop found on Google, and worth stopping for on Instagram. You keep doing the work you're good at — the rest is ours.</p>
+      <div class="hero-cta">
+        <a class="btn btn-amber" href="#local" data-jump="local"><svg><use href="#i-store"></use></svg>I run a local business</a>
+        <a class="btn btn-ghost" href="#shopify" data-jump="shopify"><svg><use href="#i-cart"></use></svg>I sell on Shopify / online</a>
+      </div>
+      <div>
+        <p class="hero-note"><svg><use href="#i-gift"></use></svg>The first 15 days of posting are free. No contract, no card.</p>
+        <button class="tap-play" id="tapPlay" type="button">
+          <svg><use href="#i-play"></use></svg>Tap to watch
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATH STRIP ===== -->
+<section class="pad" id="paths">
+  <div class="wrap">
+    <h2 class="reveal">Which one sounds like you?</h2>
+    <p class="lede reveal" style="margin-top:16px">Pick the one that fits and we'll show you exactly what we'd do for you.</p>
+    <div class="paths">
+      <a class="path-card" href="#local" data-jump="local">
+        <span class="path-ico"><svg><use href="#i-store"></use></svg></span>
+        <h3>You have a shop, and a quiet phone</h3>
+        <p>Cafe, bakery, salon, plumber, corner shop. People walk past you every day and still don't know what you sell.</p>
+        <span class="path-more">Show me what you'd do <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+      <a class="path-card" href="#shopify" data-jump="shopify">
+        <span class="path-ico"><svg><use href="#i-cart"></use></svg></span>
+        <h3>You have a store, and a quiet checkout</h3>
+        <p>Shopify or any online shop. The products are up, the site works — but the orders trickle in instead of pouring.</p>
+        <span class="path-more">Show me what you'd do <svg><use href="#i-arrow"></use></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOCAL ===== -->
+<section class="pad dark" id="local" tabindex="-1">
+  <div class="wrap split">
+    <div class="split-head">
+      <p class="eyebrow reveal">For local businesses</p>
+      <h2 class="reveal">Your regulars love you. The rest of the street hasn't met you yet.</h2>
+      <p class="head-note">Someone two streets away types "best coffee near me" at 4pm. Right now they find somebody else. That's the whole problem — and it's a fixable one.</p>
+      <div class="hero-cta" style="margin-top:28px">
+        <a class="btn btn-amber" href="#contact">Get my free 15 days <svg><use href="#i-arrow"></use></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <p class="pull">You just baked a new cake. Who even knows?</p>
+      <div class="feat">
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-browser"></use></svg></span>
+          <div>
+            <h3>A website that shows up when people search</h3>
+            <p>Not a fancy one. A fast one that says what you sell, when you're open and where to find you — written so Google can actually read it.</p>
+            <span class="feat-tag">SEO-friendly build</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-chat"></use></svg></span>
+          <div>
+            <h3>We run your social media for you</h3>
+            <p>New thing on the menu? A fresh cut? A job you're proud of? It goes up that day, looking good, without you stopping to think about your phone.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-calendar"></use></svg></span>
+          <div>
+            <h3>A plan, so your page never goes quiet</h3>
+            <p>No more three silent weeks and then four posts in one afternoon. We map the next month out before it starts, around your busy days and your slow ones.</p>
+            <span class="feat-tag">Content strategy</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-search"></use></svg></span>
+          <div>
+            <h3>We do the thinking about what to post</h3>
+            <p>You've got a shop to run. We look at what's working for places like yours in your town and bring you the ideas already sorted. You just say yes.</p>
+            <span class="feat-tag">Content research</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-phone"></use></svg></span>
+          <div>
+            <h3>Short videos, without a camera crew</h3>
+            <p>Reels of your food, your salon, your finished work — made with AI, so nobody has to stand in front of a lens or lose an afternoon to a shoot.</p>
+            <span class="feat-tag">AI-produced reels</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHOPIFY ===== -->
+<section class="pad" id="shopify" tabindex="-1">
+  <div class="wrap split">
+    <div class="split-head">
+      <p class="eyebrow reveal">For Shopify &amp; online sellers</p>
+      <h2 class="reveal">The store is built. Now it needs people walking in.</h2>
+      <p class="head-note">You did the hard part — the products, the photos, the shipping. Getting seen shouldn't be the thing that stops you.</p>
+      <div class="hero-cta" style="margin-top:28px">
+        <a class="btn btn-blue" href="#contact">Talk to us <svg><use href="#i-arrow"></use></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <p class="pull">A photo just sits there. A reel makes a thumb stop.</p>
+      <div class="feat">
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-phone"></use></svg></span>
+          <div>
+            <h3>Your products, turned into videos people finish watching</h3>
+            <p>We take what you already sell and make short vertical videos out of it — the kind someone watches to the end and then taps through to your store.</p>
+            <span class="feat-tag">AI-produced reels</span>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-chat"></use></svg></span>
+          <div>
+            <h3>Posts on Facebook and TikTok, every week</h3>
+            <p>Posting once when you remember doesn't move anything. We keep both pages busy, so people see you more than once before they decide to buy.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <span class="feat-ico"><svg><use href="#i-target"></use></svg></span>
+          <div>
+            <h3>Ads pointed at buyers, not at view counts</h3>
+            <p>Anyone can buy views. We set your ads up to go after the people who take a card out — and we watch the sales number, not the likes, and change the ads when it isn't moving.</p>
+            <span class="feat-tag">Meta · Facebook · TikTok ads</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PACKAGE ===== -->
+<section class="pad paper2" id="package">
+  <div class="wrap">
+    <p class="eyebrow reveal">What you get</p>
+    <h2 class="reveal">Everything in one go — and the build itself costs you nothing.</h2>
+    <div class="pkg-grid" style="margin-top:44px">
+      <div>
+        <p class="lede">One package. No menu of add-ons to work your way through. This is what we do for a business when we start together.</p>
+        <p class="pkg-fine"><b>About the word "free":</b> we don't charge you to build the website. You still pay for your own hosting and domain — that money goes to the hosting company, not to us, and both accounts stay in your name.</p>
+        <div class="pkg-cta">
+          <a class="btn btn-amber" href="#contact">Start the free 15 days <svg><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn-outline" href="https://wa.me/923005521519?text=Hi%20blueticks%20-%20I%27d%20like%20to%20know%20more%20about%20the%20package." target="_blank" rel="noopener"><svg><use href="#i-whatsapp"></use></svg>Ask a question</a>
+        </div>
+      </div>
+
+      <div class="pkg">
+        <p class="pkg-title">The blueticks package</p>
+        <p class="pkg-sub">Website, social media and ads — handled by us, start to finish.</p>
+        <ul class="pkg-list">
+          <li>
+            <span class="pkg-check"><svg><use href="#i-check"></use></svg></span>
+            <div>
+              <strong>Your website, built free</strong>
+              <span>Built so Google can find you. You only pay hosting and domain — never a build fee to us.</span>
+            </div>
+          </li>
+          <li>
+            <span class="pkg-check"><svg><use href="#i-check"></use></svg></span>
+            <div>
+              <strong>We run your social media</strong>
+              <span>Not a setup and a goodbye. We post, we reply, we keep it moving every week.</span>
+            </div>
+          </li>
+          <li>
+            <span class="pkg-check"><svg><use href="#i-check"></use></svg></span>
+            <div>
+              <strong>Ads and reels, made with AI</strong>
+              <span>Short videos and ad creatives for your products or your shop — no film crew, no studio day.</span>
+            </div>
+          </li>
+          <li>
+            <span class="pkg-check"><svg><use href="#i-check"></use></svg></span>
+            <div>
+              <strong>We work out what to post</strong>
+              <span>The research and the monthly plan are ours to do. You just approve it.</span>
+            </div>
+          </li>
+        </ul>
+        <div class="pkg-free">
+          <svg><use href="#i-gift"></use></svg>
+          <div>
+            <b>15 days of posting, completely free</b>
+            <span>Try us for two weeks before you decide anything. No contract, no card, no awkward exit.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="pad dark" id="how">
+  <div class="wrap">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="reveal" style="max-width:18ch">Three steps. None of them are hard work for you.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-n">01</span>
+        <h3>We talk for twenty minutes</h3>
+        <p>Tell us what you sell and who buys it. No forms to fill in, no strategy workshop. A call or a few WhatsApp messages is plenty.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <h3>We build, and we start posting</h3>
+        <p>Your website goes up and the first two weeks of posts start rolling — while you carry on running the place.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <h3>You look at it and decide</h3>
+        <p>Fifteen days later you've seen exactly what we produce. Like it, and we carry on. Don't, and we shake hands — you've spent nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="pad" id="why">
+  <div class="wrap">
+    <p class="eyebrow reveal">Why us</p>
+    <h2 class="reveal" style="max-width:20ch">Small team. You get the people doing the work.</h2>
+    <div class="why">
+      <div class="why-card">
+        <span class="feat-ico"><svg><use href="#i-users"></use></svg></span>
+        <h3>Nobody sitting in the middle</h3>
+        <p>You message us, we answer. The person replying is the person making your reels, so nothing gets lost being passed along.</p>
+      </div>
+      <div class="why-card">
+        <span class="feat-ico"><svg><use href="#i-bolt"></use></svg></span>
+        <h3>Ask on Monday, see it Tuesday</h3>
+        <p>Want the header changed or a post pulled down? It gets done that day or the next — not "in the next sprint".</p>
+      </div>
+      <div class="why-card">
+        <span class="feat-ico"><svg><use href="#i-globe"></use></svg></span>
+        <h3>We work around your clock</h3>
+        <p>We already look after businesses in the UK, USA, Australia and Canada. Your morning is a normal working time for us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="pad dark" id="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal">Get in touch</p>
+    <h2 class="reveal" style="max-width:20ch">Tell us about your business. We'll tell you what we'd do.</h2>
+    <p class="lede" style="margin-top:18px">No pitch deck, no pressure. The quickest way is WhatsApp — most people get an answer the same day.</p>
+
+    <div class="contact-grid">
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <!-- Netlify needs this to know which form the submission belongs to -->
+        <input type="hidden" name="form-name" value="contact">
+        <!-- Honeypot: people never see it, bots fill it in and get ignored -->
+        <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="row2">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" placeholder="e.g. Sarah" required>
+          </div>
+          <div class="field">
+            <label for="f-biz">Business name</label>
+            <input id="f-biz" name="business" type="text" placeholder="e.g. Corner House Cafe" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-email">Your email</label>
+          <input id="f-email" name="email" type="email" placeholder="you@yourshop.com" required>
+        </div>
+        <div class="field">
+          <label for="f-service">What do you need?</label>
+          <select id="f-service" name="service">
+            <option value="A website for my local business">A website for my local business</option>
+            <option value="Someone to run my social media">Someone to run my social media</option>
+            <option value="Reels and content for my products">Reels and content for my products</option>
+            <option value="Facebook / TikTok ads">Facebook / TikTok ads</option>
+            <option value="Everything - the full package">Everything — the full package</option>
+            <option value="Not sure yet, just asking">Not sure yet, just asking</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Anything else?</label>
+          <textarea id="f-msg" name="message" placeholder="What you sell, and what isn't working right now."></textarea>
+        </div>
+        <button class="btn btn-amber" id="formSubmit" type="submit" style="width:100%;justify-content:center">
+          <svg><use href="#i-mail"></use></svg><span>Send it over</span>
+        </button>
+        <p class="form-note">We read every one of these. Prefer WhatsApp? The button on the right is quicker.</p>
+      </form>
+
+      <!-- shown in place of the form once it has gone through -->
+      <div class="sent" id="formSent" hidden>
+        <span class="sent-ico"><svg><use href="#i-check"></use></svg></span>
+        <h3 id="sentTitle">Got it — that's with us.</h3>
+        <p>We'll come back to you today, usually within a few hours. Nothing else for you to do.</p>
+        <a class="btn btn-amber" href="https://wa.me/923005521519" target="_blank" rel="noopener">
+          <svg><use href="#i-whatsapp"></use></svg>Or message us right now
+        </a>
+      </div>
+
+      <div class="cards">
+        <a class="ccard" href="https://wa.me/923005521519" target="_blank" rel="noopener">
+          <span class="feat-ico"><svg><use href="#i-whatsapp"></use></svg></span>
+          <div><b>WhatsApp us</b><span>+92 300 5521519 — usually the quickest reply</span></div>
+        </a>
+        <a class="ccard" href="mailto:bluetickssolutions@gmail.com">
+          <span class="feat-ico"><svg><use href="#i-mail"></use></svg></span>
+          <div><b>Email us</b><span>bluetickssolutions@gmail.com</span></div>
+        </a>
+        <a class="ccard" href="https://www.linkedin.com/company/blueticks-solutions-digital-agency/" target="_blank" rel="noopener">
+          <span class="feat-ico"><svg><use href="#i-linkedin"></use></svg></span>
+          <div><b>LinkedIn</b><span>blueticks Solutions — Digital Agency</span></div>
+        </a>
+        <a class="ccard" href="#package">
+          <span class="feat-ico"><svg><use href="#i-handshake"></use></svg></span>
+          <div><b>Still deciding?</b><span>Have another look at what's in the package</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark"><svg><use href="#i-tick"></use></svg></span>
+          <span class="brand-name"><b>blueticks</b> <span>Solutions</span></span>
+        </a>
+        <p class="foot-tag">We get small businesses found online — and give people something worth finding.</p>
+      </div>
+
+      <div class="foot-serve">
+        <b>Working with clients in</b>
+        <ul>
+          <li>United Kingdom</li>
+          <li>United States</li>
+          <li>Australia</li>
+          <li>Canada</li>
+        </ul>
+      </div>
+
+      <div class="foot-links">
+        <a class="iconlink" href="https://www.linkedin.com/company/blueticks-solutions-digital-agency/" target="_blank" rel="noopener" aria-label="blueticks Solutions on LinkedIn"><svg><use href="#i-linkedin"></use></svg></a>
+        <a class="iconlink" href="https://wa.me/923005521519" target="_blank" rel="noopener" aria-label="WhatsApp blueticks Solutions"><svg><use href="#i-whatsapp"></use></svg></a>
+        <a class="iconlink" href="mailto:bluetickssolutions@gmail.com" aria-label="Email blueticks Solutions"><svg><use href="#i-mail"></use></svg></a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>&copy; <span id="year">2026</span> blueticks Solutions. All rights reserved.</span>
+      <span>bluetickssolutions@gmail.com &nbsp;·&nbsp; +92 300 5521519</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a class="float-wa" href="https://wa.me/923005521519" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg><use href="#i-whatsapp"></use></svg><span class="label-full">Chat with us</span>
+</a>
+
+<!-- vertical video modal (mobile) -->
+<div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Intro video">
+  <div class="modal-box">
+    <p class="modal-fallback">Video coming soon.</p>
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close video"><svg><use href="#i-close"></use></svg></button>
+    <video id="modalVideo" data-src="assets/hero-video-vertical.mp4" poster="assets/hero-poster.jpg" playsinline controls loop></video>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var desktop      = window.matchMedia('(min-width: 900px)');
+
+  function onMQ(mq, fn) {
+    if (mq.addEventListener) { mq.addEventListener('change', fn); }
+    else if (mq.addListener) { mq.addListener(fn); }
+  }
+
+  /* ---------------------------------------------------------
+     1. Hero media
+        desktop  -> load + autoplay the muted loop at 0.6x
+        mobile   -> poster only, plus a "tap to watch" button
+        reduced  -> poster only, on any device
+     --------------------------------------------------------- */
+  var video   = document.getElementById('heroVideo');
+  var tapPlay = document.getElementById('tapPlay');
+  var videoOn = false;
+
+  function killVideo() {
+    if (!video) { return; }
+    videoOn = false;
+    video.classList.remove('ready');
+    try { video.pause(); } catch (e) {}
+    if (video.getAttribute('src')) {
+      video.removeAttribute('src');
+      video.load();
+    }
+  }
+
+  function startVideo() {
+    if (!video || videoOn) { return; }
+    videoOn = true;
+    video.src = video.getAttribute('data-src');
+    video.load();
+    var p = video.play();
+    if (p && p['catch']) { p['catch'](function () { killVideo(); }); }
+  }
+
+  if (video) {
+    video.addEventListener('loadeddata', function () {
+      try { video.playbackRate = 0.6; } catch (e) {}
+      video.classList.add('ready');
+    });
+    video.addEventListener('play', function () {
+      try { video.playbackRate = 0.6; } catch (e) {}
+    });
+    /* placeholder or missing file -> stay on the poster, no black box */
+    video.addEventListener('error', function () { killVideo(); }, true);
+  }
+
+  function syncHero() {
+    var full = desktop.matches && !reduceMotion.matches;
+    document.body.classList.toggle('show-tap', !desktop.matches && !reduceMotion.matches);
+    if (full) { startVideo(); } else { killVideo(); }
+  }
+
+  syncHero();
+  onMQ(desktop, syncHero);
+  onMQ(reduceMotion, syncHero);
+
+  /* ---------------------------------------------------------
+     2. Vertical video modal (mobile "tap to watch")
+     --------------------------------------------------------- */
+  var modal      = document.getElementById('videoModal');
+  var modalVideo = document.getElementById('modalVideo');
+  var modalClose = document.getElementById('modalClose');
+  var lastFocus  = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (!modalVideo.getAttribute('src')) {
+      modalVideo.src = modalVideo.getAttribute('data-src');
+    }
+    var p = modalVideo.play();
+    if (p && p['catch']) { p['catch'](function () {}); }
+    modalClose.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    try { modalVideo.pause(); } catch (e) {}
+    if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+  }
+
+  if (tapPlay)    { tapPlay.addEventListener('click', openModal); }
+  if (modalClose) { modalClose.addEventListener('click', closeModal); }
+  if (modal)      { modal.addEventListener('click', function (e) { if (e.target === modal) { closeModal(); } }); }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) { closeModal(); }
+  });
+
+  /* ---------------------------------------------------------
+     3. Reveal section headings the first time they scroll in
+     --------------------------------------------------------- */
+  var reveals = document.querySelectorAll('.reveal');
+  var i;
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+    for (i = 0; i < reveals.length; i++) { reveals[i].classList.add('in'); }
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      for (var n = 0; n < entries.length; n++) {
+        if (entries[n].isIntersecting) {
+          entries[n].target.classList.add('in');
+          io.unobserve(entries[n].target);
+        }
+      }
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    for (i = 0; i < reveals.length; i++) { io.observe(reveals[i]); }
+  }
+
+  /* ---------------------------------------------------------
+     4. Jump to a section, then flash it briefly
+     --------------------------------------------------------- */
+  function flash(el) {
+    if (reduceMotion.matches) { return; }
+    el.classList.remove('flashing');
+    void el.offsetWidth;
+    el.classList.add('flashing');
+    setTimeout(function () { el.classList.remove('flashing'); }, 2100);
+  }
+
+  function jumpTo(id, smooth) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 76;
+    var behave = (smooth && !reduceMotion.matches) ? 'smooth' : 'auto';
+    try { window.scrollTo({ top: top, behavior: behave }); }
+    catch (e) { window.scrollTo(0, top); }
+    setTimeout(function () { flash(el); }, smooth ? 520 : 60);
+  }
+
+  var jumpers = document.querySelectorAll('[data-jump]');
+  for (i = 0; i < jumpers.length; i++) {
+    jumpers[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = this.getAttribute('data-jump');
+      jumpTo(id, true);
+      if (history.replaceState) { history.replaceState(null, '', '#' + id); }
+    });
+  }
+
+  /* ---------------------------------------------------------
+     5. ?for= routing — swap the hero line, then jump
+        ?for=local    -> local-business version
+        ?for=shopify  -> Shopify / online-seller version
+     --------------------------------------------------------- */
+  var COPY = {
+    local: {
+      title: 'If you’re a plumber, one good website can ring your phone <span class="hl">so often you’ll need a second van.</span>',
+      sub:   'We build the site, write the posts, and put your work in front of the people nearby who need it today — while you get on with the job.'
+    },
+    shopify: {
+      title: 'Your store is open. The shelves are full. <span class="hl">So why is it so quiet in there?</span>',
+      sub:   'We turn your products into reels people stop for, post them where your buyers already are, and run ads built to bring buyers — not just views.'
+    }
+  };
+
+  var match = /[?&]for=([^&#]*)/.exec(window.location.search);
+  var path  = match ? decodeURIComponent(match[1]).toLowerCase() : '';
+
+  if (COPY[path]) {
+    document.getElementById('heroTitle').innerHTML = COPY[path].title;
+    document.getElementById('heroSub').textContent = COPY[path].sub;
+    window.addEventListener('load', function () {
+      setTimeout(function () { jumpTo(path, true); }, 450);
+    });
+  }
+
+  /* ---------------------------------------------------------
+     6. Contact form
+
+        WHERE THE ENQUIRIES GO
+        ----------------------
+        Leave FORM_ENDPOINT empty on Netlify: the form posts to this same
+        page and Netlify catches it. Every enquiry then shows up under
+        Forms in your Netlify dashboard, and you get an email too (turn
+        that on once, under Forms > Form notifications).
+
+        If you ever move this site to Hostinger, Netlify Forms goes away
+        with it. Upload hostinger-only/contact.php next to index.html and
+        change the line below to:   var FORM_ENDPOINT = 'contact.php';
+
+        Either way, if the endpoint can't be reached the form quietly
+        falls back to opening the visitor's email app, so a submission is
+        never simply lost.
+     --------------------------------------------------------- */
+  var FORM_ENDPOINT = '';
+
+  var form = document.getElementById('contactForm');
+  var sent = document.getElementById('formSent');
+
+  function val(id) { return (document.getElementById(id).value || '').trim(); }
+
+  function mailtoUrl() {
+    var name = val('f-name'), biz = val('f-biz'), email = val('f-email'), msg = val('f-msg');
+    var service = document.getElementById('f-service').value;
+
+    var subject = 'Website enquiry - ' + (biz || name || 'new business');
+    var body =
+      'Name: ' + name + '\n' +
+      'Business: ' + biz + '\n' +
+      'Email: ' + email + '\n' +
+      'Looking for: ' + service + '\n\n' +
+      'Message:\n' + (msg || '(none)') + '\n\n' +
+      '-- sent from the blueticks Solutions website';
+
+    return 'mailto:bluetickssolutions@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+  }
+
+  /* fallback: hand it to the visitor's own email app */
+  function openMailApp() {
+    var a = document.createElement('a');
+    a.href = mailtoUrl();
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function showSent() {
+    var first = val('f-name').split(' ')[0];
+    if (first) {
+      document.getElementById('sentTitle').textContent = 'Got it, ' + first + ' — that’s with us.';
+    }
+    form.hidden = true;
+    sent.hidden = false;
+    sent.scrollIntoView({ block: 'center', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.checkValidity && !form.checkValidity()) {
+        if (form.reportValidity) { form.reportValidity(); }
+        return;
+      }
+
+      var btn   = document.getElementById('formSubmit');
+      var label = btn.querySelector('span');
+      var was   = label.textContent;
+      btn.disabled = true;
+      label.textContent = 'Sending…';
+
+      var body = new URLSearchParams(new FormData(form)).toString();
+      var url  = FORM_ENDPOINT || window.location.pathname;
+
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: body
+      }).then(function (res) {
+        if (!res.ok) { throw new Error('HTTP ' + res.status); }
+        showSent();
+      })['catch'](function () {
+        /* endpoint not reachable — don't lose the enquiry */
+        btn.disabled = false;
+        label.textContent = was;
+        openMailApp();
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------
+     7. Odds and ends
+     --------------------------------------------------------- */
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.pageYOffset > 12); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
