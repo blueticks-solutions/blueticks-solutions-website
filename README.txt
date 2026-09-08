@@ -1,122 +1,61 @@
-blueticks Solutions — landing page
-==================================
+blueticks Solutions — assets folder
+===================================
 
-Plain HTML, CSS and JavaScript. No build step, no Node, nothing to install.
-
-
-HOW TO PUT IT ONLINE (Hostinger)
---------------------------------
-1. Log in to hPanel and open File Manager.
-2. Go into public_html.
-3. Upload blueticks-landing.zip there.
-4. Right-click the zip and choose Extract.
-5. Make sure index.html sits directly inside public_html, NOT inside a
-   folder — the address bar should show .../public_html/index.html.
-   If the extract created a folder, open it, select everything (including
-   the hidden .htaccess file — "select all" does not catch hidden files,
-   tick it separately), Move, single-click ".." once, then MOVE.
-6. Delete the zip and the leftover empty folder.
-
-No domain yet? Hostinger gives every account a temporary preview address
-(something like yoursite.preview-domain.com) in hPanel. The site works on
-it exactly the same. When the real domain is pointed at the hosting,
-nothing here needs changing.
+Three of the four files here are PLACEHOLDERS. The site works and looks
+finished without touching them, but replace them when the real video is ready.
 
 
-WHAT'S IN HERE
---------------
-  index.html          The whole page — copy, styles and script in one file.
-  assets/             Video, poster image, favicon. See assets/README.txt
-                      for the two placeholder videos to replace.
-  .htaccess           Compression and caching. Harmless if Hostinger
-                      ignores any part of it.
+1. hero-video.mp4          ** PLACEHOLDER — replace **
+------------------------------------------------------
+The full-width background clip on desktop (screens 900px and wider).
+
+  Format   : MP4 (H.264), 16:9, 1920x1080
+  Length   : 8-12 seconds, must loop cleanly
+  Audio    : none (the page plays it muted anyway — strip the audio track
+             to save file size)
+  Filming  : shot at 60fps, because the page plays it back at 0.6x speed
+             for the slow-motion look
+  Size     : keep it under about 6 MB or the hero takes too long to appear
+
+  Prompt used to generate it:
+
+    "A warm, slow-motion, cinematic close-up: a barista's hands pouring
+     coffee into a white cup on a wooden counter, steam rising gently,
+     soft golden-hour window light, shallow depth of field, muted
+     background. Transitions smoothly into a close-up of a smartphone
+     screen scrolling vertical video content (reels), warm ambient
+     lighting reflecting off the screen. No visible faces, no on-screen
+     text, no logos. Loopable, 8-12 seconds, shot at 60fps for smooth
+     slow-motion playback. Muted, no dialogue."
 
 
-THE ?for= LINKS (for email campaigns)
--------------------------------------
-Same page, different first impression, depending on the link you send:
-
-  yoursite.com/?for=local
-      Headline becomes the plumber line, and the page scrolls itself
-      down to the local-business section with a soft highlight.
-
-  yoursite.com/?for=shopify
-      Headline becomes the "why is it so quiet in there" line, and it
-      scrolls to the Shopify section instead.
-
-  yoursite.com
-      The general headline, no auto-scroll.
-
-So local-business emails get the first link, Shopify sellers get the
-second, and both land on the part of the page that speaks to them.
+2. hero-video-vertical.mp4  ** PLACEHOLDER — replace **
+-------------------------------------------------------
+The same clip, cropped to 9:16 (1080x1920). This is what opens in the
+popup when someone on a phone taps "Tap to watch". Phones never download
+the big landscape file — that's deliberate, it saves their data.
 
 
-THINGS YOU MIGHT WANT TO EDIT
------------------------------
-Everything is in index.html and it's plain English — search for the text
-you want to change and type over it.
+3. hero-poster.jpg          (working placeholder — replace when you can)
+------------------------------------------------------------------------
+The still image behind the hero text. Right now it's a warm gradient that
+matches the brand colours, so the page looks right out of the box.
 
-  WhatsApp number   search for   923005521519      (appears 6 times)
-  Email address     search for   bluetickssolutions@gmail.com
-  LinkedIn URL      search for   linkedin.com/company
-  Colours           search for   :root                 (top of the file)
+Replace it with the FIRST FRAME of hero-video.mp4, exported at 1920x1080
+JPG, quality around 80. That way the video fades in from the still with no
+visible jump.
 
-
-WHERE THE CONTACT FORM ENQUIRIES GO
------------------------------------
-On Netlify (where the site is now): Netlify Forms catches them.
-
-Nothing to install — the form already has the right markup. But two
-things have to happen once:
-
-  1. REDEPLOY the site with this version of index.html. Netlify only
-     notices a form when it scans a fresh deploy. Until you redeploy,
-     the form falls back to opening the visitor's email app.
-
-  2. Turn on the email alert. In Netlify:
-        Site configuration > Forms > Form notifications
-        > Add notification > Email notification
-        > send to bluetickssolutions@gmail.com
-
-After that, every enquiry lands in two places: your Netlify dashboard
-under Forms > contact (a proper list you can search and export to CSV),
-and your inbox.
-
-Free plan allows 100 submissions a month, which is plenty to start.
-Spam is handled by a hidden honeypot field — you'll never see the bots.
-
-To check the list: Netlify dashboard > your site > Forms > contact.
+This image is doing a lot of work — it's what mobile visitors see instead
+of the video, and what anyone with "reduce motion" turned on sees too.
 
 
-IF THE SITE EVER MOVES TO HOSTINGER
------------------------------------
-Netlify Forms only works on Netlify. Hostinger runs PHP instead, so:
-
-  1. Upload hostinger-only/contact.php into public_html, next to
-     index.html.
-  2. In index.html find this line (near the bottom, in the script):
-
-        var FORM_ENDPOINT = '';
-
-     change it to:
-
-        var FORM_ENDPOINT = 'contact.php';
-
-  3. Open contact.php and set $MAIL_FROM to a real mailbox on your own
-     domain (create one in hPanel). Shared hosts reject mail that claims
-     to come from a gmail.com address.
-
-Every enquiry then gets written to .data/submissions.json on your hosting
-BEFORE the email is attempted — so even if the mail server has a bad day,
-nothing is lost. The .htaccess in here already blocks the public from
-reading that folder.
+4. favicon.svg              (final — no need to change)
+--------------------------------------------------------
+The little blue-tick icon in the browser tab.
 
 
-THE SAFETY NET
---------------
-Whichever of the two is running, if the form can't reach it the page
-quietly falls back to opening the visitor's own email app with the
-message already written. An enquiry is never just silently dropped.
-
-And WhatsApp is on the page five different ways — for most visitors
-that's still the one they'll actually use.
+If a video file is missing or broken
+------------------------------------
+Nothing breaks. The page checks, and quietly falls back to the poster
+image. So you can upload the site today and drop the real videos in later
+by just overwriting these two files — no code changes needed.
